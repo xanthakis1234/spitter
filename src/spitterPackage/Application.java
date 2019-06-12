@@ -11,7 +11,7 @@ public class Application {
 		//service.addSpitter(kate);
 		//service.viewSpitter(kate);
 		
-		//System.out.println("--------UPDATE----------");
+		System.out.println("--------UPDATE----------");
 		//kate.setFirstname("KATE");
 		//kate.setLastname("Barry");
 		//service.updateSpitter(kate);
