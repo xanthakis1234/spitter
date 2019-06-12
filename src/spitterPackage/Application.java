@@ -6,15 +6,25 @@ public class Application {
 		
  
 		SpitterService service = new SpitterService();
-		Spitter desmond = new Spitter("Desmond","Sart", "ABC","12345",5);
-		//service.addSpitter(desmond);
-		//service.viewAllSpitters();
+		Spitter kate = new Spitter("Kate","Barry", "KB","12345",6);
+		//System.out.println("--------CREATE SPITTER--------");
+		//service.addSpitter(kate);
+		//service.viewSpitter(kate);
+		
+		//System.out.println("--------UPDATE----------");
+		//kate.setFirstname("KATE");
+		//kate.setLastname("Barry");
+		//service.updateSpitter(kate);
+		service.viewAllSpitters();
+		
+		
 		//service.deleteSpitter(dany);
 		//service.viewAllSpitters();
 		//service.viewSpitter(desmond);
-		Spittle desmondspittle = new Spittle(desmond,"Desmonds First",2);
-		service.createSpittle(desmondspittle);
-		service.viewAllSpittles();
+		//System.out.println("------Create Spittle-----");
+		//Spittle katespittle = new Spittle(kate,"Kate's First",3);
+		//service.createSpittle(katespittle);
+		//service.viewAllSpittles();
 		   
 
 	}

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,6 +13,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
 
 
 
@@ -82,34 +84,21 @@ public class SpittleDao {
 		//view  my Spittles
 		public void getAllSpittles() {
 					
-					try {
-						
-						
-						Class.forName(DRIVER).newInstance();
-						Connection connection = DriverManager.getConnection(URL, USERNAME_DB, PASSWORD_DB);
-						sql = "select post , id_spittle, username from spitterdb.spittle";
-						
-						PreparedStatement viewspittle = connection.prepareStatement(sql);
-						
-						ResultSet rs = viewspittle.executeQuery(sql);
-						
-						while (rs.next()) {
-							 String username = rs.getString("username");
-							 int spittleId = rs.getInt("id_spittle");
-					         String post = rs.getString("post");
-					         
-					         System.out.println("Username : " + username + "\n");
-					         System.out.println("Spittle id : " + spittleId + "\n");
-					         System.out.println("Spittle : " + post + "\n");
-					        
-						}
-						
-						rs.close();
-						connection.close();
-						
-					}catch (Exception e) {
-						e.printStackTrace();  
-					} 
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
+	       
+	        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+	     	Session session = factory.openSession();  
+	     	
+	     	String hql = "from Spittle";
+			Query query = session.createQuery(hql);
+			List<Spitter> AllSpittles = query.list();
+			
+			AllSpittles.forEach(System.out::println);
+			
+			factory.close();  
+		    session.close();
+			
 				}
 		
 		

@@ -44,10 +44,10 @@ public class Spitter {
 	}
 	
 	public String toString(){
-		  return firstname + " " + lastname +" " + username +" " + password;  
+		  return "ID : " + spitterId + "\n" + "Firstname : " + firstname + "\n" + "Lastname : " + lastname + "\n" + "Username : "+ username + "\n" + "Password : " + password + "\n" ;  
 	}
 		  
-	//@Column(name="firstname")	  
+	  
 	public String getFirstname() {
 		return firstname;
 	}
@@ -55,7 +55,7 @@ public class Spitter {
 		this.firstname = firstname;
 	}
 	
-	//@Column(name="lastname")
+	
 	public String getLastname() {
 		return lastname;
 	}
@@ -63,7 +63,7 @@ public class Spitter {
 		this.lastname = lastname;
 	}
 	
-	//@Column(name="username")
+	
 	public String getUsername() {
 		return username;
 	}
@@ -71,7 +71,7 @@ public class Spitter {
 		this.username = username;
 	}
 	
-	//@Column(name="passwrd")
+	
 	public String getPassword() {
 		return password;
 	}
@@ -82,8 +82,7 @@ public class Spitter {
 
 
 	
-	//@Id
-	//@Column(name="id_spitter")
+	
 	public int getSpitterId() {
 		return spitterId;
 	}
