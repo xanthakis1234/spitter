@@ -1,14 +1,8 @@
 package spitterPackage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
-
 
 public class SpitterService {
-	
+
 	
 	SpitterDao spitterDao = new SpitterDao();
 	SpittleDao spittleDao = new SpittleDao();
@@ -27,9 +21,9 @@ public class SpitterService {
 	
 	
 	//view Spitter account
-	public void viewSpitter(int idSpitter) {
+	public void viewSpitter(Spitter spitter) {
 
-		spitterDao.getSpitter(idSpitter);
+		spitterDao.getSpitter(spitter);
 			
 	}
 	
@@ -64,9 +58,9 @@ public class SpitterService {
 	
 	
 	//create Spittle
-	public void createSpittle(Spitter spitter, Spittle spittle ) {
+	public void createSpittle(Spittle spittle ) {
 		
-		spittleDao.insertSpittle(spitter, spittle);
+		spittleDao.insertSpittle(spittle);
 			
 	}
 	

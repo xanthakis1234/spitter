@@ -5,6 +5,16 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+
+
 public class SpittleDao {
 	
 	static String databaseName = "";
@@ -18,33 +28,24 @@ public class SpittleDao {
 	
 	
 	//create Spittle
-		public void insertSpittle(Spitter spitter, Spittle spittle ) {
-			try {
-				
-				Class.forName(DRIVER).newInstance();
-				Connection connection = DriverManager.getConnection(URL, USERNAME_DB, PASSWORD_DB);
-				sql = "insert into spitterdb.spittle (post , username , id_spittle) values (?,?,?);";
-				PreparedStatement ps = connection.prepareStatement(sql);
-				
-				ps.setString(1, spittle.getSpittle());
-				ps.setString(2, spitter.getUsername());
-				ps.setInt(3, spittle.getSpittleId());
-				
-				status = ps.executeUpdate();
-				
-				if (status != 0) {
-					System.out.println("Spittle created! \n");
-					connection.close();
-					
-				}else {
-					System.out.println("error in createSpittle \n");
-				}
-				
-				}catch (Exception e) {
-					e.printStackTrace(); 
-				}  
-				
-				
+		public void insertSpittle(Spittle spittle ) {
+			
+			
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
+	       
+	        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+	     	Session session = factory.openSession();  
+	     	Transaction transaction = session.beginTransaction();  
+	     	
+	     	session.save(spittle);  
+	     	transaction.commit();  
+		    System.out.println("successfully saved Spittle");    
+		    
+		    factory.close();  
+		    session.close();   
+		
+		
 		}
 		
 		
@@ -115,31 +116,19 @@ public class SpittleDao {
 		//update spittle
 		public void update(Spittle spittle){
 			
-			try {
-				
-				Class.forName(DRIVER).newInstance();
-				Connection connection = DriverManager.getConnection(URL, USERNAME_DB, PASSWORD_DB);
-				sql = "update spitterdb.spittle set post = ? where id_spittle =?";
-				PreparedStatement update = connection.prepareStatement(sql);
-				
-				update.setString(1, spittle.getSpittle());
-				update.setInt(2, spittle.getSpittleId());
-				
-				status = update.executeUpdate();
-				
-				if (status != 0) {
-					System.out.println("Spittle Updated! \n");
-					
-					connection.close();
-					
-				}else {
-					System.out.println("error in updateSpittle \n");
-				}
-				
-				}catch (Exception e) {
-					e.printStackTrace(); 
-				}  
-				
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+			Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();
+			
+			SessionFactory factory = meta.getSessionFactoryBuilder().build();
+			Session session = factory.openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			session.update(spittle);
+			transaction.commit();
+			System.out.println("Soittle updated!");
+			
+			factory.close();
+			session.close();
 			
 		}
 		
@@ -147,29 +136,19 @@ public class SpittleDao {
 		//delete Spittle
 		public void delete(Spittle spittle) {
 			
-			try {
-				
-				Class.forName(DRIVER).newInstance();
-				Connection connection = DriverManager.getConnection(URL, USERNAME_DB, PASSWORD_DB);
-				sql = "delete from spitterdb.spittle where id_spittle = ?";
-				PreparedStatement delete = connection.prepareStatement(sql);
-				delete.setInt(1, spittle.getSpittleId());
-						
-				status = delete.executeUpdate();
-				
-				if (status != 0) {
-					System.out.println("Spittle deleted! \n");
-					connection.close();
-					
-				}else {
-					System.out.println("error in deleteSpittle \n");
-				}
-				
-				}catch (Exception e) {
-					e.printStackTrace();  
-				}  
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+			Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();
 			
+			SessionFactory factory = meta.getSessionFactoryBuilder().build();
+			Session session = factory.openSession();
+			Transaction transaction = session.beginTransaction();
 			
+			session.delete(spittle);
+			transaction.commit();
+			System.out.println("Spittle Deleted");
+			
+			factory.close();
+			session.close();
 			
 			
 		}

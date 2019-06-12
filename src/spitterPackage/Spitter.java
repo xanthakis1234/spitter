@@ -1,11 +1,28 @@
 package spitterPackage;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "spitter")
 public class Spitter {
 	
+	@Column(name="firstname")
 	private String firstname ; 
+	
+	@Column(name="lastname")
 	private String lastname ;
+	
+	@Column(name="username")
 	private String username ;
+	
+	@Column(name="passwrd")
 	private String password ;
+	
+	@Id
+	@Column(name="id_spitter")
 	private int spitterId;
 	
 	
@@ -30,33 +47,43 @@ public class Spitter {
 		  return firstname + " " + lastname +" " + username +" " + password;  
 	}
 		  
-		  
+	//@Column(name="firstname")	  
 	public String getFirstname() {
 		return firstname;
 	}
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
+	
+	//@Column(name="lastname")
 	public String getLastname() {
 		return lastname;
 	}
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+	
+	//@Column(name="username")
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
+	//@Column(name="passwrd")
 	public String getPassword() {
 		return password;
 	}
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
 
+	
+	//@Id
+	//@Column(name="id_spitter")
 	public int getSpitterId() {
 		return spitterId;
 	}
@@ -66,5 +93,5 @@ public class Spitter {
 		this.spitterId = spitterId;
 	}
 	
-	
+
 }

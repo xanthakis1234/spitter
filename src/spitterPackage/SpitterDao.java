@@ -4,8 +4,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.query.Query;
+
+
 
 public class SpitterDao {
+
 	
 	static String databaseName = "";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -22,73 +35,36 @@ public class SpitterDao {
 	//it adds a spitter into the database
 	public void insertSpitter(Spitter spitter) {
 		
-		try {
-			
-			Class.forName(DRIVER).newInstance();
-			Connection connection = DriverManager.getConnection(URL, USERNAME_DB, PASSWORD_DB);
-			sql = "insert into spitterdb.spitter (firstname , lastname, username , passwrd , id_spitter) values (?,?,?,?,?);";
-			PreparedStatement insert = connection.prepareStatement(sql);
-			
-			insert.setString(1, spitter.getFirstname());
-			insert.setString(2, spitter.getLastname());
-			insert.setString(3, spitter.getUsername());
-			insert.setString(4, spitter.getPassword());
-			insert.setInt(5, spitter.getSpitterId());
-			
-			status = insert.executeUpdate();
-			
-			if (status != 0) {
-				System.out.println("insert spitter was done \n");
-				connection.close();
-				
-			}else {
-				System.out.println("error in insertspitter \n");
-			}
-			
-			}catch (Exception e) {
-				e.printStackTrace(); 
-			}  
-		
+		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
+       
+        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+     	Session session = factory.openSession();  
+     	Transaction transaction = session.beginTransaction();  
+     	
+     	session.save(spitter);  
+     	transaction.commit();  
+	    System.out.println("successfully saved");    
+	    
+	    factory.close();  
+	    session.close();   
+     	
+	
 	}
 		
 	
 	
 	
 	//Get spitter account from database
-	public void getSpitter(int idSpitter) {
+	public void getSpitter(Spitter spitter) {
 
-		try {
-			
-			Class.forName(DRIVER).newInstance();
-			Connection connection = DriverManager.getConnection(URL, USERNAME_DB, PASSWORD_DB);
-			sql = "select firstname , lastname, username , passwrd from spitterdb.spitter  where id_spitter = " + "'" + idSpitter + "'";
-			
-			
-			PreparedStatement view = connection.prepareStatement(sql);
-			
-			
-			ResultSet rs = view.executeQuery(sql);
-			
-			while (rs.next()) {
-				
-		         String firstnamefromdb = rs.getString("firstname");
-		         String lastnamefromdb = rs.getString("lastname");
-		         String usernamefromdb = rs.getString("username");
-		         String passwordfromdb = rs.getString("passwrd");
+		
+		System.out.println("ID: " + spitter.getSpitterId());
+		System.out.println("Firstname: " + spitter.getFirstname());
+        System.out.println("Lastname: " + spitter.getLastname());
+        System.out.println("Username: " + spitter.getUsername());
+        System.out.println("Password: " + spitter.getPassword() + "\n");
 
-
-		         System.out.println("Firstname: " + firstnamefromdb);
-		         System.out.println("Lastname: " + lastnamefromdb);
-		         System.out.println("Username: " + usernamefromdb);
-		         System.out.println("Password: " + passwordfromdb + "\n");
-			}
-			
-			rs.close();
-			connection.close();
-			
-		}catch (Exception e) {
-			e.printStackTrace(); 
-		} 
 		
 	}
 	
@@ -96,6 +72,20 @@ public class SpitterDao {
 	//view all spitter acounts
 	public void getAllSpitters() {
 		
+		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
+       
+        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+     	Session session = factory.openSession();  
+     	
+     	String hql = "from LogEntry";
+		Query query = session.createQuery(hql);
+		List<Spitter> AllSpitters = query.list();
+		
+		AllSpitters.forEach(System.out::println);
+		
+		
+	/*	
 		try {
 			
 			
@@ -127,40 +117,26 @@ public class SpitterDao {
 		}catch (Exception e) {
 			e.printStackTrace();  
 		}
-		
+		*/
 	}
 	
 	
 	//update Spitter account
 		public void updateAccount(Spitter spitter) {
 			
-			try {
-				
-				Class.forName(DRIVER).newInstance();
-				Connection connection = DriverManager.getConnection(URL, USERNAME_DB, PASSWORD_DB);
-				sql = "update spitterdb.spitter set firstname = ?, lastname = ?, username = ?, passwrd= ? where id_spitter =?";
-				PreparedStatement update = connection.prepareStatement(sql);
-				
-				update.setString(1, spitter.getFirstname());
-				update.setString(2, spitter.getLastname());
-				update.setString(3, spitter.getUsername());
-				update.setString(4, spitter.getPassword());
-				update.setInt(5, spitter.getSpitterId());
-				
-				
-				status = update.executeUpdate();
-				
-				if (status != 0) {
-					System.out.println("Update completed! \n");
-					connection.close();
-					
-				}else {
-					System.out.println("error in Update Spitter \n");
-				}
-				
-				}catch (Exception e) {
-					e.printStackTrace(); 
-				}  
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
+	       
+	        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+	     	Session session = factory.openSession();  
+	     	Transaction transaction = session.beginTransaction();  
+	     	
+	     	session.update(spitter);  
+	     	transaction.commit();  
+		    System.out.println("successfully updated");    
+		    
+		    factory.close();  
+		    session.close(); 
 				
 				
 		}
@@ -169,28 +145,19 @@ public class SpitterDao {
 		//delete Spitter account
 		public void deleteAccount(Spitter spitter) {
 			
-			try {
-				
-				Class.forName(DRIVER).newInstance();
-				Connection connection = DriverManager.getConnection(URL, USERNAME_DB, PASSWORD_DB);
-				sql = "delete from spitterdb.spitter where id_spitter = ?";
-				PreparedStatement delete = connection.prepareStatement(sql);
-				delete.setInt(1, spitter.getSpitterId());
-						
-				status = delete.executeUpdate();
-				
-				if (status != 0) {
-					System.out.println("Spitter deleted! \n");
-					connection.close();
-					
-				}else {
-					System.out.println("error in deleteSpitter \n");
-				}
-				
-				}catch (Exception e) {
-					e.printStackTrace(); 
-				}  
-			
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
+	       
+	        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+	     	Session session = factory.openSession();  
+	     	Transaction transaction = session.beginTransaction();  
+	     	
+	     	session.delete(spitter);  
+		    transaction.commit();  
+		    System.out.println("successfully deleted");    
+		    
+		    factory.close();  
+		    session.close();   
 			
 			
 		}
@@ -198,5 +165,5 @@ public class SpitterDao {
 
 	
 	
-	
 }
+
