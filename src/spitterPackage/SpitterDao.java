@@ -41,13 +41,33 @@ public class SpitterDao {
 	//Get spitter account from database
 	public void getSpitter(Spitter spitter) {
 
+		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
+       
+        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+     	Session session = factory.openSession();  
+     	
+     	String hql = "from Spitter where id_spitter = :id";
+		Query query = session.createQuery(hql);
 		
+		int id = spitter.getSpitterId();
+		query.setParameter("id", id );
+		
+		List<Spitter> spitterlist = query.list();
+		
+		
+		factory.close();  
+	    session.close();
+		
+		
+			
+		/*
 		System.out.println("ID: " + spitter.getSpitterId());
 		System.out.println("Firstname: " + spitter.getFirstname());
         System.out.println("Lastname: " + spitter.getLastname());
         System.out.println("Username: " + spitter.getUsername());
         System.out.println("Password: " + spitter.getPassword() + "\n");
-
+		*/
 		
 	}
 	
