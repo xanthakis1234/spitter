@@ -81,7 +81,7 @@ public class SpittleDao {
 		}
 		
 		
-		//view  my Spittles
+		//view all Spittles
 		public void getAllSpittles() {
 					
 			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  

@@ -39,7 +39,7 @@ public class SpitterDao {
 	
 	
 	//Get spitter account from database
-	public void getSpitter(Spitter spitter) {
+	public List<Spitter> getSpitter(Spitter spitter) {
 
 		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
         Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -53,13 +53,13 @@ public class SpitterDao {
 		int id = spitter.getSpitterId();
 		query.setParameter("id", id );
 		
-		List<Spitter> spitterlist = query.list();
+		List<Spitter> spitterList = query.list();
 		
 		
 		factory.close();  
 	    session.close();
 		
-		
+		return spitterList;
 			
 		/*
 		System.out.println("ID: " + spitter.getSpitterId());
@@ -73,7 +73,7 @@ public class SpitterDao {
 	
 	
 	//view all spitter accounts
-	public void getAllSpitters() {
+	public List<Spitter> getAllSpitters() {
 		
 		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
         Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -85,11 +85,12 @@ public class SpitterDao {
 		Query query = session.createQuery(hql);
 		List<Spitter> AllSpitters = query.list();
 		
-		AllSpitters.forEach(System.out::println);
+		//AllSpitters.forEach(System.out::println);
 		
 		factory.close();  
 	    session.close();
 		
+	return AllSpitters;
 		
 
 	}

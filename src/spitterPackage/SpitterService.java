@@ -1,9 +1,10 @@
 package spitterPackage;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class SpitterService {
 
-	
 	SpitterDao spitterDao = new SpitterDao();
 	SpittleDao spittleDao = new SpittleDao();
 	
@@ -13,26 +14,20 @@ public class SpitterService {
 	
 	//create Spitter
 	public void addSpitter(Spitter spitter) {
-				
 		spitterDao.insertSpitter(spitter);
-		
 	}
 	
 	
 	
 	//view Spitter account
-	public void viewSpitter(Spitter spitter) {
-
-		spitterDao.getSpitter(spitter);
-			
+	public List<Spitter> viewSpitter(Spitter spitter) {
+		return spitterDao.getSpitter(spitter);	
 	}
 	
 	//get all Spitters
-	public void viewAllSpitters() {
-		
-		spitterDao.getAllSpitters();
+	public List<Spitter> viewAllSpitters() {
 
-	}
+	return spitterDao.getAllSpitters();}
 
 	
 	//update Spitter account

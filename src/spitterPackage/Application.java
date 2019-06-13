@@ -1,5 +1,8 @@
 package spitterPackage;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 public class Application {
 	
 	public static void main(String[] args) {
@@ -14,13 +17,14 @@ public class Application {
 		System.out.println("--------UPDATE----------");
 		//kate.setFirstname("KATE");
 		//kate.setLastname("Barry");
-		//service.updateSpitter(kate);
-		service.viewAllSpitters();
-		
+		//service.updateSpitter(kate);;
+		List sp ;
+		sp = (List) service.viewAllSpitters();
+		((Iterable<Spitter>) sp).forEach(System.out::println);
 		
 		//service.deleteSpitter(dany);
 		//service.viewAllSpitters();
-		//service.viewSpitter(desmond);
+		//service.viewSpitter(kate);
 		//System.out.println("------Create Spittle-----");
 		//Spittle katespittle = new Spittle(kate,"Kate's First",3);
 		//service.createSpittle(katespittle);
