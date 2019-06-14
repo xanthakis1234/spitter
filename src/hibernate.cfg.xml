@@ -26,8 +26,8 @@
   <!-- Drop and re-create the database schema on startup -->
    <property name="hbm2ddl.auto">update</property> 
     
-   <mapping class="spitterpackage.Spitter"></mapping>
-   <mapping class="spitterpackage.Spittle"></mapping>
+   <mapping class="spitterPackage.Spitter"></mapping>
+   <mapping class="spitterPackage.Spittle"></mapping>
       
   </session-factory> 
  </hibernate-configuration>

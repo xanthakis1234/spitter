@@ -12,11 +12,11 @@
 
 	<servlet>
 		<servlet-name>ViewServlet</servlet-name>
-		<servlet-class>spitterpackage.ViewServlet</servlet-class>
+		<servlet-class>spitterPackage.ViewServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>ViewAcc</servlet-name>
-		<servlet-class>spitterpackage.ViewSpecificServlet</servlet-class>
+		<servlet-class>spitterPackage.ViewSpecificServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
