@@ -1,6 +1,5 @@
 package spitterPackage;
 
-import java.awt.List;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -9,25 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-
-
-public class ViewServlet extends HttpServlet {
-		
+public class ViewSpecificServlet extends HttpServlet{
+	
 	private SpitterService service = new SpitterService();
-
+	Spitter kate = new Spitter("Kate","Barry", "KB","12345",6);
 	public void init() throws ServletException {
 	}
 	  
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// String operation = request.getParameter("operation");
 
 		// Setting up the content type of webpage
 		response.setContentType("text/plain");
 		// Writing message to the web page
 		PrintWriter out = response.getWriter();
-		out.println(service.viewAllSpitters());
+		out.println(service.viewSpitter(kate));
 	}
 
 	  
@@ -37,7 +31,5 @@ public class ViewServlet extends HttpServlet {
 	       * of Servlet life cycle
 	       */
 	   }
-	}
-	
 
-	
+}

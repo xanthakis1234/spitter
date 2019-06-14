@@ -18,10 +18,8 @@ public class Application {
 		//kate.setFirstname("KATE");
 		//kate.setLastname("Barry");
 		//service.updateSpitter(kate);;
-		List sp ;
-		sp = (List) service.viewAllSpitters();
-		((Iterable<Spitter>) sp).forEach(System.out::println);
 		
+		System.out.println(service.viewAllSpitters());
 		//service.deleteSpitter(dany);
 		//service.viewAllSpitters();
 		//service.viewSpitter(kate);
