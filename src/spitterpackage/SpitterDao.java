@@ -1,4 +1,4 @@
-package spitterPackage;
+package spitterpackage;
 
 import java.util.List;
 
