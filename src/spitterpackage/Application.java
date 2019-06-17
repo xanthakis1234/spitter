@@ -21,7 +21,6 @@ public class Application {
 		
 		System.out.println(service.viewAllSpitters());
 		//service.deleteSpitter(dany);
-		//service.viewAllSpitters();
 		//service.viewSpitter(kate);
 		//System.out.println("------Create Spittle-----");
 		//Spittle katespittle = new Spittle(kate,"Kate's First",3);
