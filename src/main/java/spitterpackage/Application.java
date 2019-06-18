@@ -19,9 +19,9 @@ public class Application {
 		//kate.setLastname("Barry");
 		//service.updateSpitter(kate);;
 		
-		//System.out.println(service.viewAllSpitters());
+		System.out.println(service.viewAllSpitters());
 		//service.deleteSpitter(dany);
-		System.out.println(service.viewSpitter(kate));
+		//System.out.println(service.viewSpitter(kate));
 		//System.out.println("------Create Spittle-----");
 		//Spittle katespittle = new Spittle(kate,"Kate's First",3);
 		//service.createSpittle(katespittle);

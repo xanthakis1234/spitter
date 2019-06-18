@@ -33,7 +33,7 @@ public class SpittleDao {
 		public void insertSpittle(Spittle spittle ) {
 			
 			
-			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("/main/resource/hibernate.cfg.xml").build();  
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
 	       
 	        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
@@ -84,7 +84,7 @@ public class SpittleDao {
 		//view all Spittles
 		public void getAllSpittles() {
 					
-			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("/main/resource/hibernate.cfg.xml").build();  
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
 	       
 	        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
@@ -105,7 +105,7 @@ public class SpittleDao {
 		//update spittle
 		public void update(Spittle spittle){
 			
-			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("/main/resource/hibernate.cfg.xml").build();
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
 			Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();
 			
 			SessionFactory factory = meta.getSessionFactoryBuilder().build();
@@ -125,7 +125,7 @@ public class SpittleDao {
 		//delete Spittle
 		public void delete(Spittle spittle) {
 			
-			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("/main/resource/hibernate.cfg.xml").build();
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
 			Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();
 			
 			SessionFactory factory = meta.getSessionFactoryBuilder().build();
