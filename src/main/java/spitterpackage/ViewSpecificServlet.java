@@ -1,4 +1,4 @@
-package main.java.spitterpackage;
+package spitterpackage;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -1,4 +1,4 @@
-package main.java.spitterpackage;
+package spitterpackage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

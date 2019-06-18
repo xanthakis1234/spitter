@@ -1,4 +1,4 @@
-package main.java.spitterpackage;
+package spitterpackage;
 
 import java.awt.List;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class Application {
 		//kate.setFirstname("KATE");
 		//kate.setLastname("Barry");
 		//service.updateSpitter(kate);;
-		
+		System.out.println(service.viewSpitter(kate));
 		System.out.println(service.viewAllSpitters());
 		//service.deleteSpitter(dany);
 		//System.out.println(service.viewSpitter(kate));
