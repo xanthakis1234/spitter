@@ -1,4 +1,4 @@
-package spitterpackage;
+package main.java.spitterpackage;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

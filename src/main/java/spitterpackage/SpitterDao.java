@@ -1,4 +1,4 @@
-package spitterpackage;
+package main.java.spitterpackage;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class SpitterDao {
 	//it adds a spitter into the database
 	public void insertSpitter(Spitter spitter) {
 		
-		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("/main/resource/hibernate.cfg.xml").build();  
         Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
        
         SessionFactory factory = meta.getSessionFactoryBuilder().build();  
@@ -41,7 +41,7 @@ public class SpitterDao {
 	//Get spitter account from database
 	public List<Spitter> getSpitter(Spitter spitter) {
 
-		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("/main/resource/hibernate.cfg.xml").build();  
         Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
        
         SessionFactory factory = meta.getSessionFactoryBuilder().build();  
@@ -75,7 +75,7 @@ public class SpitterDao {
 	//view all spitter accounts
 	public List<Spitter> getAllSpitters() {
 		
-		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("/main/resource/hibernate.cfg.xml").build();  
         Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
        
         SessionFactory factory = meta.getSessionFactoryBuilder().build();  
@@ -99,7 +99,7 @@ public class SpitterDao {
 	//update Spitter account
 		public void updateAccount(Spitter spitter) {
 			
-			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("/main/resource/hibernate.cfg.xml").build();  
 	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
 	       
 	        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
@@ -120,7 +120,7 @@ public class SpitterDao {
 		//delete Spitter account
 		public void deleteAccount(Spitter spitter) {
 			
-			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("/main/resource/hibernate.cfg.xml").build();  
 	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
 	       
 	        SessionFactory factory = meta.getSessionFactoryBuilder().build();  

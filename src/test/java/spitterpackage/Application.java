@@ -1,4 +1,4 @@
-package spitterpackage;
+package test.java.spitterpackage;
 
 import java.awt.List;
 import java.util.ArrayList;
