@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<hibernate-configuration> 
- <session-factory> 
-  <!-- Database connection settings -->
-   <property name="connection.driver_class">com.mysql.jdbc.Driver</property> 
-   <property name="connection.url">jdbc:mysql://localhost:3306/spitterdb</property> 
-   <property name="connection.username">root</property> 
-   <property name="connection.password">1234</property> 
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/spitterdb</property>
+        <!--<property name="connection.url">jdbc:mysql://10.250.23.189:3306/spitterdb</property>-->
+        <property name="connection.username">root</property>
+        <property name="connection.password">1234</property>
 
-  <!-- JDBC connection pool (use the built-in) -->
-   <property name="connection.pool_size">1</property> 
+        <!-- this allows to use a jndi provided datasource -->
+        <!--<property name="hibernate.connection.datasource">java:comp/env/jdbc/spitterdb</property>-->
 
-  <!-- SQL dialect -->
-   <property name="dialect">org.hibernate.dialect.MySQLDialect</property> 
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
 
-  <!-- Enable Hibernate's automatic session context management -->
-    <property name="current_session_context_class">thread</property> 
-  
-  <!-- Disable the second-level cache -->
-   <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property> 
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 
-  <!-- Echo all executed SQL to stdout -->
-   <property name="show_sql">true</property> 
-  
-  <!-- Drop and re-create the database schema on startup -->
-   <property name="hbm2ddl.auto">update</property> 
-    
-   <mapping class="spitterpackage.Spitter"></mapping>
-   <mapping class="spitterpackage.Spittle"></mapping>
-      
-  </session-factory> 
- </hibernate-configuration>
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache -->
+        <!-- Not required. It is disable by default -->
+        <!--<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>-->
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- We cannot allow to Database to be modified every time the app is deployed -->
+        <!-- https://stackoverflow.com/questions/438146/what-are-the-possible-values-of-the-hibernate-hbm2ddl-auto-configuration-and-wha -->
+        <property name="hbm2ddl.auto">validate</property>
+
+        <mapping class="spitterpackage.Spitter"></mapping>
+        <mapping class="spitterpackage.Spittle"></mapping>
+
+    </session-factory>
+</hibernate-configuration>
