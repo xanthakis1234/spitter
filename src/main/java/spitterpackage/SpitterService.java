@@ -7,6 +7,8 @@ public class SpitterService {
 
 	SpitterDao spitterDao = new SpitterDao();
 	SpittleDao spittleDao = new SpittleDao();
+	private DAO dao;
+	
 	
 
 	//---------------------spitter-----------------------
@@ -14,26 +16,26 @@ public class SpitterService {
 	
 	//create Spitter
 	public void addSpitter(Spitter spitter) {
-		spitterDao.insertSpitter(spitter);
+		spitterDao.insert(spitter);
 	}
 	
 	
 	
 	//view Spitter account
 	public List<Spitter> viewSpitter(Spitter spitter) {
-		return spitterDao.getSpitter(spitter);	
+		return spitterDao.get(spitter);	
 	}
 	
 	//get all Spitters
 	public List<Spitter> viewAllSpitters() {
 
-	return spitterDao.getAllSpitters();}
+	return spitterDao.getAll();}
 
 	
 	//update Spitter account
 	public void updateSpitter(Spitter spitter) {
 		
-		spitterDao.updateAccount(spitter);
+		spitterDao.update(spitter);
 	
 	}
 	
@@ -41,7 +43,7 @@ public class SpitterService {
 	//delete Spitter account
 	public void deleteSpitter(Spitter spitter) {
 		
-		spitterDao.deleteAccount(spitter);
+		spitterDao.delete(spitter);
 		
 	}
 	
@@ -55,7 +57,7 @@ public class SpitterService {
 	//create Spittle
 	public void createSpittle(Spittle spittle ) {
 		
-		spittleDao.insertSpittle(spittle);
+		spittleDao.insert(spittle);
 			
 	}
 	
@@ -63,14 +65,14 @@ public class SpitterService {
 	//view Spittle
 	public void viewMySpittles(Spitter spitter) {
 		
-		spittleDao.getMySpittles(spitter);
+		spittleDao.get(spitter);
 		
 	}
 	
 	//view all spittles
 	public void viewAllSpittles() {
 		
-		spittleDao.getAllSpittles();
+		spittleDao.getAll();
 		
 	}
 	

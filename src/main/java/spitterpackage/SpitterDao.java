@@ -1,5 +1,6 @@
 package spitterpackage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -12,11 +13,13 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
 
-public class SpitterDao {
+public class SpitterDao implements DAO<Spitter>{
 
+	private List<Spitter> AllSpitters = new ArrayList<>();
 	
 	//it adds a spitter into the database
-	public void insertSpitter(Spitter spitter) {
+	@Override
+	public void insert(Spitter spitter) {
 		
 		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
         Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -39,7 +42,7 @@ public class SpitterDao {
 	
 	
 	//Get spitter account from database
-	public List<Spitter> getSpitter(Spitter spitter) {
+	public List<Spitter> get(Spitter spitter) {
 
 		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
         Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -60,20 +63,13 @@ public class SpitterDao {
 	    session.close();
 		
 		return spitterList;
-			
-		/*
-		System.out.println("ID: " + spitter.getSpitterId());
-		System.out.println("Firstname: " + spitter.getFirstname());
-        System.out.println("Lastname: " + spitter.getLastname());
-        System.out.println("Username: " + spitter.getUsername());
-        System.out.println("Password: " + spitter.getPassword() + "\n");
-		*/
 		
 	}
 	
 	
 	//view all spitter accounts
-	public List<Spitter> getAllSpitters() {
+	@Override
+	public List<Spitter> getAll() {
 		
 		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
         Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -83,8 +79,8 @@ public class SpitterDao {
      	
      	String hql = "from Spitter";
 		Query query = session.createQuery(hql);
-		List<Spitter> AllSpitters = query.list();
-		
+		//List<Spitter> AllSpitters = query.list();
+		this.AllSpitters = query.list();
 		//AllSpitters.forEach(System.out::println);
 		
 		factory.close();  
@@ -97,7 +93,8 @@ public class SpitterDao {
 	
 	
 	//update Spitter account
-		public void updateAccount(Spitter spitter) {
+		@Override
+		public void update(Spitter spitter) {
 			
 			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -118,7 +115,8 @@ public class SpitterDao {
 		
 		
 		//delete Spitter account
-		public void deleteAccount(Spitter spitter) {
+		@Override
+		public void delete(Spitter spitter) {
 			
 			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -136,7 +134,6 @@ public class SpitterDao {
 			
 			
 		}
-
 
 	
 	

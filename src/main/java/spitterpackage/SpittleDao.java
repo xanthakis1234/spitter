@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -17,7 +18,7 @@ import org.hibernate.query.Query;
 
 
 
-public class SpittleDao {
+public class SpittleDao implements DAO<Spittle>{
 	
 	static String databaseName = "";
 	static final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -27,10 +28,11 @@ public class SpittleDao {
 	public String sql = null;
 	private int status = 0;
 	private int spitterid = 0;
+	private List<Spittle> AllSpittles = new ArrayList<>();
 	
-	
-	//create Spittle
-		public void insertSpittle(Spittle spittle ) {
+		//create Spittle
+		@Override
+		public void insert(Spittle spittle ) {
 			
 			
 			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
@@ -52,7 +54,8 @@ public class SpittleDao {
 		
 		
 		//view  my Spittles
-		public void getMySpittles(Spitter spitter) {
+		//thelei ftiaksimo
+		public void get(Spitter spitter) {
 			
 			try {
 				
@@ -82,7 +85,8 @@ public class SpittleDao {
 		
 		
 		//view all Spittles
-		public void getAllSpittles() {
+		@Override
+		public List<Spittle> getAll() {
 					
 			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -92,17 +96,18 @@ public class SpittleDao {
 	     	
 	     	String hql = "from Spittle";
 			Query query = session.createQuery(hql);
-			List<Spitter> AllSpittles = query.list();
-			
-			AllSpittles.forEach(System.out::println);
+			//List<Spittle> AllSpittles = query.list();
+			this.AllSpittles = query.getResultList();
+			//AllSpittles.forEach(System.out::println);
 			
 			factory.close();  
 		    session.close();
-			
+			return AllSpittles;
 				}
 		
 		
 		//update spittle
+		@Override
 		public void update(Spittle spittle){
 			
 			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
@@ -123,6 +128,7 @@ public class SpittleDao {
 		
 		
 		//delete Spittle
+		@Override
 		public void delete(Spittle spittle) {
 			
 			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
@@ -140,6 +146,13 @@ public class SpittleDao {
 			session.close();
 			
 			
+		}
+
+
+		@Override
+		public List<Spittle> get(Spittle t) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 		
 
