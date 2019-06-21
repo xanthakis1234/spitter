@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=CDPlayerConfig.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(classes=CDPlayerConfig.class)
 public class CDPlayerTest {
 	
-	@Rule
+/*	@Rule
 	public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 	
 	@Autowired
@@ -28,6 +28,6 @@ public class CDPlayerTest {
 		player.play();
 		assertEquals("playing Sgt. Pepper's by The Beatles", systemOutRule.getLog());
 		
-	}
+	}*/
 	
 }
