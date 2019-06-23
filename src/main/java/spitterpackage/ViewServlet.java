@@ -1,5 +1,8 @@
 package spitterpackage;
 
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 import java.awt.List;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,15 +12,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import spitterpackage.dao.SpitterService;
 
 
 
 
+@Controller
+@RequestMapping({"/AllSpitters"})
 public class ViewServlet extends HttpServlet {
+	
+	
+	@Autowired
+	@Qualifier("SpitterService")
+	private SpitterService service;
+	
+	
+	public ViewServlet(SpitterService service) {
+		this.service = service;
+	}
+	@RequestMapping(method=GET)
+	public String getSpitters(Model model) {
+		model.addAllAttributes(service.viewAllSpitters());
 		
-	private SpitterService service = new SpitterService();
+	return "spitters";
+	}
 
-	public void init() throws ServletException {
+	/*public void init() throws ServletException {
 	}
 	  
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +62,6 @@ public class ViewServlet extends HttpServlet {
 	       * used when we want to do something at the end
 	       * of Servlet life cycle
 	       */
-	   }
 	}
 	
 

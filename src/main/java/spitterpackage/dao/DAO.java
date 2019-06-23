@@ -1,4 +1,4 @@
-package spitterpackage;
+package spitterpackage.dao;
 
 import java.util.List;
 

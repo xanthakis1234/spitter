@@ -1,13 +1,33 @@
-package spitterpackage;
+package spitterpackage.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpitterService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-	SpitterDao spitterDao = new SpitterDao();
-	SpittleDao spittleDao = new SpittleDao();
-	private DAO dao;
+import spitterpackage.Spitter;
+import spitterpackage.Spittle;
+
+@Component(value="SpitterService")
+@Qualifier("SpitterService")
+public class SpitterService {
+	
+	private SpittleDao spittleDao;
+	//private SpitterDao spitterDao;
+	//SpitterDao spitterDao = new SpitterDao();
+	//SpittleDao spittleDao = new SpittleDao();
+	
+	@Autowired
+	@Qualifier("SpitterDao")
+	private DAO<Spitter> dao;
+	
+	SpitterService(DAO<Spitter> dao){
+		this.dao = dao;
+		//this.spittleDao = spittleDao;
+		
+	}
 	
 	
 
@@ -16,26 +36,26 @@ public class SpitterService {
 	
 	//create Spitter
 	public void addSpitter(Spitter spitter) {
-		spitterDao.insert(spitter);
+		dao.insert(spitter);
 	}
 	
 	
 	
 	//view Spitter account
 	public List<Spitter> viewSpitter(Spitter spitter) {
-		return spitterDao.get(spitter);	
+		return dao.get(spitter);	
 	}
 	
 	//get all Spitters
 	public List<Spitter> viewAllSpitters() {
 
-	return spitterDao.getAll();}
+	return dao.getAll();}
 
 	
 	//update Spitter account
 	public void updateSpitter(Spitter spitter) {
 		
-		spitterDao.update(spitter);
+		dao.update(spitter);
 	
 	}
 	
@@ -43,7 +63,7 @@ public class SpitterService {
 	//delete Spitter account
 	public void deleteSpitter(Spitter spitter) {
 		
-		spitterDao.delete(spitter);
+		dao.delete(spitter);
 		
 	}
 	

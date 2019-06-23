@@ -1,4 +1,4 @@
-package spitterpackage;
+package spitterpackage.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,9 +15,15 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+import spitterpackage.Spitter;
+import spitterpackage.Spittle;
 
 
-
+@Component(value="SpittleDao")
+@Qualifier("SpittleDao")
 public class SpittleDao implements DAO<Spittle>{
 	
 	static String databaseName = "";
