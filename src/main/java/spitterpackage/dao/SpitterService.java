@@ -11,7 +11,6 @@ import spitterpackage.Spitter;
 import spitterpackage.Spittle;
 
 @Component(value="SpitterService")
-@Qualifier("SpitterService")
 public class SpitterService {
 	
 	private SpittleDao spittleDao;
@@ -42,16 +41,16 @@ public class SpitterService {
 	
 	
 	//view Spitter account
-	public List<Spitter> viewSpitter(Spitter spitter) {
-		return dao.get(spitter);	
+	public List<Spitter> viewSpitter(String username) {
+		return dao.get(username);	
 	}
 	
 	//get all Spitters
 	public List<Spitter> viewAllSpitters() {
 
-	return dao.getAll();}
+	return dao.getAll();
+	}
 
-	
 	//update Spitter account
 	public void updateSpitter(Spitter spitter) {
 		

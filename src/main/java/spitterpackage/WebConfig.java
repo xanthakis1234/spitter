@@ -9,6 +9,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import spitterpackage.dao.SpitterDao;
+import spitterpackage.dao.SpitterService;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan("spitterpackage")
@@ -20,6 +23,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 		resolver.setExposeContextBeansAsAttributes(true);
+		//resolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
 		return resolver;
 	}
 	

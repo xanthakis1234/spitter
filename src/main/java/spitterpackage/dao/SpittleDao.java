@@ -17,13 +17,13 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import spitterpackage.Spitter;
 import spitterpackage.Spittle;
 
 
-@Component(value="SpittleDao")
-@Qualifier("SpittleDao")
+@Repository("SpittleDao")
 public class SpittleDao implements DAO<Spittle>{
 	
 	static String databaseName = "";
@@ -156,7 +156,7 @@ public class SpittleDao implements DAO<Spittle>{
 
 
 		@Override
-		public List<Spittle> get(Spittle t) {
+		public List<Spittle> get(String st) {
 			// TODO Auto-generated method stub
 			return null;
 		}

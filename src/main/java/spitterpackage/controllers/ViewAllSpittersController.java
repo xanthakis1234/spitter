@@ -1,4 +1,4 @@
-package spitterpackage;
+package spitterpackage.controllers;
 
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -25,7 +25,7 @@ import spitterpackage.dao.SpitterService;
 
 @Controller
 @RequestMapping({"/AllSpitters"})
-public class ViewServlet extends HttpServlet {
+public class ViewAllSpittersController{
 	
 	
 	@Autowired
@@ -33,35 +33,19 @@ public class ViewServlet extends HttpServlet {
 	private SpitterService service;
 	
 	
-	public ViewServlet(SpitterService service) {
+	public ViewAllSpittersController(SpitterService service) {
 		this.service = service;
 	}
+	
 	@RequestMapping(method=GET)
 	public String getSpitters(Model model) {
-		model.addAllAttributes(service.viewAllSpitters());
+		model.addAttribute("spitterList", service.viewAllSpitters());
 		
 	return "spitters";
 	}
 
-	/*public void init() throws ServletException {
-	}
-	  
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// String operation = request.getParameter("operation");
-
-		// Setting up the content type of webpage
-		response.setContentType("text/plain");
-		// Writing message to the web page
-		PrintWriter out = response.getWriter();
-		out.println(service.viewAllSpitters());
-	}
-
-	  
-	public void destroy() {
-	      /* leaving empty for now this can be
-	       * used when we want to do something at the end
-	       * of Servlet life cycle
-	       */
+	public void destroy() {}
+   
 	}
 	
 

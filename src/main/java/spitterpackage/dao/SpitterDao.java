@@ -13,11 +13,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import spitterpackage.Spitter;
 
-@Component(value="SpitterDao")
-@Qualifier("SpitterDao")
+
+@Repository("SpitterDao")
 public class SpitterDao implements DAO<Spitter>{
 
 	private List<Spitter> AllSpitters = new ArrayList<>();
@@ -35,7 +36,7 @@ public class SpitterDao implements DAO<Spitter>{
      	
      	session.save(spitter);  
      	transaction.commit();  
-	    System.out.println("successfully saved");    
+	    //System.out.println("successfully saved");    
 	    
 	    factory.close();  
 	    session.close();   
@@ -47,7 +48,7 @@ public class SpitterDao implements DAO<Spitter>{
 	
 	
 	//Get spitter account from database
-	public List<Spitter> get(Spitter spitter) {
+	public List<Spitter> get(String username) {
 
 		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
         Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -55,11 +56,11 @@ public class SpitterDao implements DAO<Spitter>{
         SessionFactory factory = meta.getSessionFactoryBuilder().build();  
      	Session session = factory.openSession();  
      	
-     	String hql = "from Spitter where id_spitter = :id";
+     	String hql = "from Spitter where username = :username";
 		Query query = session.createQuery(hql);
 		
-		int id = spitter.getSpitterId();
-		query.setParameter("id", id );
+		//int id = spitter.getSpitterId();
+		query.setParameter("username", username );
 		
 		List<Spitter> spitterList = query.list();
 		

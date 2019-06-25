@@ -8,16 +8,15 @@ import spitterpackage.Spitter;
 import spitterpackage.Spittle;
 
 @Component(value="SpittleService")
-@Qualifier("SpittleService")
 public class SpittleService {
 	
 	//private SpittleDao spittleDao;
 	
 	@Autowired
 	@Qualifier("SpittleDao")
-	private DAO<spitterpackage.Spittle> dao;
+	private DAO<Spittle> dao;
 	
-	SpittleService(DAO dao){
+	SpittleService(DAO<Spittle> dao){
 		
 		this.dao = dao;
 	}
