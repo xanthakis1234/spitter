@@ -141,7 +141,26 @@ public class SpitterDao implements DAO<Spitter>{
 			
 		}
 
-	
+		public void delete1(int id) {
+			
+			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
+	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
+	       
+	        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
+	     	Session session = factory.openSession();  
+	     	Transaction transaction = session.beginTransaction();  
+	     	
+	     	Spitter sp =session.load(Spitter.class, new Integer(id));
+	     	session.delete(sp);  
+		    transaction.commit();  
+		    System.out.println("successfully deleted");    
+		    
+		    factory.close();  
+		    session.close();   
+			
+			
+		}
+
 	
 }
 

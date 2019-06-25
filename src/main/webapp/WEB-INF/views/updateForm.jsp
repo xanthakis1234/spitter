@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Spitter</title>
+<title>Update Account</title>
 </head>
 <body>
-	<h1>Register Form</h1>
+	<h1>Update Account</h1>
 	<sf:form method="POST" modelAttribute="spitter">
 		First Name: <sf:input path="firstname" /><br />
 			<sf:errors path="firstname" cssClass="error" /><br/>
@@ -19,9 +19,7 @@
 			<sf:errors path="username" cssClass="error" /><br/>
 		Password: <sf:password path="password" /><br />
 			<sf:errors path="password" cssClass="error" /><br/>
-		ID: <sf:input path="spitterId" /><br />
-			<sf:errors path="spitterId" cssClass="error" /><br/>
-		<input type="submit" value="Register" />
+		<input type="submit" value="Update" />
 	</sf:form>
 </body>
 </html>
