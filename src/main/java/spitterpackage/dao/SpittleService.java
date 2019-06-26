@@ -47,7 +47,7 @@ public class SpittleService {
 	//update Spittle
 	public void updateSpittle(Spittle spittle){
 		
-		dao.update(spittle);
+//		dao.update(spittle);
 	
 	}
 	

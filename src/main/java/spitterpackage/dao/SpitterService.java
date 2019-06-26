@@ -52,9 +52,9 @@ public class SpitterService {
 	}
 
 	//update Spitter account
-	public void updateSpitter(Spitter spitter) {
+	public void updateSpitter(Spitter sp) {
 		
-		dao.update(spitter);
+		dao.update(sp);
 	
 	}
 	
@@ -99,7 +99,7 @@ public class SpitterService {
 	//update Spittle
 	public void updateSpittle(Spittle spittle){
 		
-		spittleDao.update(spittle);
+//		spittleDao.update(spittle);
 	
 	}
 	

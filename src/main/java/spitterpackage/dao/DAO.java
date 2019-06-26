@@ -10,6 +10,6 @@ public interface DAO<T>{
 	void insert(T t);
 	void delete(T t);
 	void update(T t);
-	List<T> get(String st);
+	List<T> get(String t);
 	List<T>	getAll();
 }

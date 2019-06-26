@@ -43,6 +43,7 @@ public class ViewAllSpittersController{
 		
 	return "spitters";
 	}
+	
 
 	public void destroy() {}
    

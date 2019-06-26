@@ -113,8 +113,8 @@ public class SpittleDao implements DAO<Spittle>{
 		
 		
 		//update spittle
-		@Override
-		public void update(Spittle spittle){
+		//@Override
+	/*	public void update(Spittle spittle){
 			
 			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
 			Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();
@@ -130,7 +130,7 @@ public class SpittleDao implements DAO<Spittle>{
 			factory.close();
 			session.close();
 			
-		}
+		}*/
 		
 		
 		//delete Spittle
@@ -156,9 +156,16 @@ public class SpittleDao implements DAO<Spittle>{
 
 
 		@Override
-		public List<Spittle> get(String st) {
+		public List<Spittle> get(String x) {
 			// TODO Auto-generated method stub
 			return null;
+		}
+
+
+		@Override
+		public void update(Spittle sp) {
+			// TODO Auto-generated method stub
+			
 		}
 		
 

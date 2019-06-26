@@ -100,7 +100,7 @@ public class SpitterDao implements DAO<Spitter>{
 	
 	//update Spitter account
 		@Override
-		public void update(Spitter spitter) {
+		public void update(Spitter sp) {
 			
 			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -109,7 +109,8 @@ public class SpitterDao implements DAO<Spitter>{
 	     	Session session = factory.openSession();  
 	     	Transaction transaction = session.beginTransaction();  
 	     	
-	     	session.update(spitter);  
+	     	//Spitter sp =session.get(Spitter.class, id);
+	     	session.update(sp);  
 	     	transaction.commit();  
 		    System.out.println("successfully updated");    
 		    
@@ -141,7 +142,7 @@ public class SpitterDao implements DAO<Spitter>{
 			
 		}
 
-		public void delete1(int id) {
+		public void update11(int id) {
 			
 			StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 	        Metadata meta = new MetadataSources(registry).getMetadataBuilder().build();  
@@ -150,10 +151,10 @@ public class SpitterDao implements DAO<Spitter>{
 	     	Session session = factory.openSession();  
 	     	Transaction transaction = session.beginTransaction();  
 	     	
-	     	Spitter sp =session.load(Spitter.class, new Integer(id));
-	     	session.delete(sp);  
+	     	Spitter sp =session.get(Spitter.class, id);
+	     	session.update(sp);  
 		    transaction.commit();  
-		    System.out.println("successfully deleted");    
+		    System.out.println("successfully updated");    
 		    
 		    factory.close();  
 		    session.close();   

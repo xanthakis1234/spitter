@@ -24,7 +24,7 @@ import spitterpackage.Spitter;
 import spitterpackage.dao.SpitterService;
 
 @Controller("register")
-@RequestMapping({"/spitter"})
+@RequestMapping({"/Spitter"})
 public class RegisterController{
 	
 	@Autowired
@@ -51,8 +51,9 @@ public class RegisterController{
 		return "redirect:/spitter/" + spitter.getUsername();
 	}
 	
-	@RequestMapping(value="/{spitter.username}", method=GET)
+	@RequestMapping(value="/{username}", method=GET)
 	public String showSpitterProfile(@PathVariable String username, Model model) {
+		//String us = spitter.getUsername(); 
 		model.addAttribute("spitter", service.viewSpitter(username));
 		return "profile";
 	}

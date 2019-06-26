@@ -19,6 +19,8 @@
 			<sf:errors path="username" cssClass="error" /><br/>
 		Password: <sf:password path="password" /><br />
 			<sf:errors path="password" cssClass="error" /><br/>
+		ID: <sf:password path="spitterId" /><br />
+			<sf:errors path="spitterId" cssClass="error" /><br/>
 		<input type="submit" value="Update" />
 	</sf:form>
 </body>

@@ -3,14 +3,19 @@ package spitterpackage;
 import java.awt.List;
 import java.util.ArrayList;
 
+import spitterpackage.dao.SpitterDao;
 import spitterpackage.dao.SpitterService;
 
 public class Application {
 	
 	public static void main(String[] args) {
 		
- 
-		//SpitterService service = new SpitterService();
+		
+		SpitterDao service = new SpitterDao();
+		Spitter test =  new Spitter("TEST","TEST","TESTTEST","12345",10);
+		test.setFirstname("UPDATE");
+		test.setLastname("UPDATE");
+		service.update(test);
 		//Spitter kate = new Spitter("Kate","Barry", "KB","12345",6);
 		//System.out.println("--------CREATE SPITTER--------");
 		//service.addSpitter(kate);

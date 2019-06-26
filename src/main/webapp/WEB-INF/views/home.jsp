@@ -11,7 +11,7 @@
 	<a href="<c:url value="/AllSpitters" />">View all Spitters</a> |
 	<a href="<c:url value="/ViewAccount" />">View Account</a> |
 	<a href="<c:url value="/spittles" />">Spittles</a> |
-	<a href="<c:url value="/spitter/register" />">Register</a> |
+	<a href="<c:url value="/Spitter/register" />">Register</a> |
 	<a href="<c:url value="/spitter/updateAccount" />">Update Account</a> |
 	<a href="<c:url value="/spitter/deleteAccount" />">Delete Account</a> |
 </body>

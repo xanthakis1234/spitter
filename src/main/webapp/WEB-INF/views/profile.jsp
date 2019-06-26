@@ -10,8 +10,16 @@
 	</head>
 	<body>
 		<h1>Your Profile</h1>
-		<c:out value="${spitter.username}" /><br/>
-		<c:out value="${spitter.firstname}" />
-		<c:out value="${spitter.lastname}" />
+		<c:forEach items="${spitter}" var="spitter">
+			<div class="spitterusername">
+				Username:<c:out value="${spitter.username}" /><br/>
+			</div>
+			<div class="spitterfirstname">
+				First Name:<c:out value="${spitter.firstname}" /><br/>
+			</div>
+			<div class="spitterlastname">
+				Last Name<c:out value="${spitter.lastname}" /><br/>
+			</div>
+		</c:forEach>
 	</body>
 </html>
