@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import spitterpackage.Spitter;
-import spitterpackage.Spittle;
+import spitterpackage.model.Spitter;
+import spitterpackage.model.Spittle;
 
 @Component(value="SpittleService")
 public class SpittleService {
@@ -20,7 +20,7 @@ public class SpittleService {
 		
 		this.dao = dao;
 	}
-	
+
 	//create Spittle
 	public void createSpittle(Spittle spittle ) {
 		

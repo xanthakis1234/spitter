@@ -8,13 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import spitterpackage.Spitter;
 import spitterpackage.dao.SpitterService;
+import spitterpackage.model.Spitter;
 
 @Controller("DeleteAccount")
 @RequestMapping({"/spitter"})
 public class DeleteSpitterController {
-	
+
 	@Autowired
 	@Qualifier("SpitterService")
 	private SpitterService service;
@@ -28,5 +28,5 @@ public class DeleteSpitterController {
 		model.addAttribute("spitter" , new Spitter());
 		return "Delete";
 	}
-
+	
 }

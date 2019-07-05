@@ -1,21 +1,13 @@
 package spitterpackage;
 
-import java.awt.List;
-import java.util.ArrayList;
-
-import spitterpackage.dao.SpitterDao;
-import spitterpackage.dao.SpitterService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Application {
 	
 	public static void main(String[] args) {
-		
-		
-		SpitterDao service = new SpitterDao();
-		Spitter test =  new Spitter("TEST","TEST","TESTTEST","12345",10);
-		test.setFirstname("UPDATE");
-		test.setLastname("UPDATE");
-		service.update(test);
+			 	
+		//Spitter test =  new Spitter("SPRING","SPRING","SPRING","SPRING",10);
+		//service.insert(test);
 		//Spitter kate = new Spitter("Kate","Barry", "KB","12345",6);
 		//System.out.println("--------CREATE SPITTER--------");
 		//service.addSpitter(kate);

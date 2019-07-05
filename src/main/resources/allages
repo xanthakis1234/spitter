@@ -1,0 +1,25 @@
+allages shmera
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>4.3.11.Final</version>
+</dependency>
+anti gia
+<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-core</artifactId>
+	<version>5.4.3.Final</version>
+</dependency>
+
+kai 
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-orm</artifactId>
+    <version>4.0.3.RELEASE</version>
+</dependency>
+anti gia
+<dependency>
+     <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+	<version>5.1.8.RELEASE</version>
+</dependency>
