@@ -2,13 +2,12 @@ package spitterpackage.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import spitterpackage.Spitter;
-import spitterpackage.Spittle;
+import spitterpackage.model.Spitter;
+import spitterpackage.model.Spittle;
 
 @Component(value="SpitterService")
 public class SpitterService {
