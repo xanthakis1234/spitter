@@ -10,8 +10,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-//import org.springframework.orm.hibernate4.HibernateTransactionManager;
-//import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
@@ -50,5 +51,24 @@ public class HibernateConfig {
 
 		return txManager;
 	}
+	
+	/*@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+		LocalContainerEntityManagerFactoryBean entityManagerFactory =
+				new LocalContainerEntityManagerFactoryBean();
+		entityManagerFactory.setDataSource(dataSource());
+		entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter());
+		entityManagerFactory.setPackagesToScan("spitterpackage.model");
+		return entityManagerFactory;
+	}
+	
+	@Bean
+	public JpaVendorAdapter jpaVendorAdapter() {
+		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+		adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+		adapter.setShowSql(true);
+		adapter.setGenerateDdl(false);
+		return adapter;		
+	}*/
 
 }

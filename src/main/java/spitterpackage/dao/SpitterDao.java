@@ -2,6 +2,10 @@ package spitterpackage.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -29,7 +33,10 @@ public class SpitterDao implements DAO<Spitter> {
 			return sessionFactory.getCurrentSession();
 		}
 	}
-
+	
+	//@PersistenceUnit
+	//private EntityManagerFactory entityManagerFactory;
+	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -38,7 +45,7 @@ public class SpitterDao implements DAO<Spitter> {
 	@Override
 	public void insert(Spitter spitter) {
 		getSession(sessionFactory).save(spitter);
-		// sessionFactory.getCurrentSession().save(spitter);
+		//entityManagerFactory.createEntityManager().persist(spitter);
 	}
 
 	// Get spitter account from database
@@ -48,6 +55,7 @@ public class SpitterDao implements DAO<Spitter> {
 		query.setParameter("username", username);
 		List<Spitter> spitterList = query.list();
 		return spitterList;
+
 	}
 
 	// view all spitter accounts

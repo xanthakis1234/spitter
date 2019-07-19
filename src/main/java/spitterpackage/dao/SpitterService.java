@@ -1,21 +1,14 @@
 package spitterpackage.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import spitterpackage.model.Spitter;
-import spitterpackage.model.Spittle;
 
 @Component(value="SpitterService")
 public class SpitterService {
-	
-	private SpittleDao spittleDao;
-	//private SpitterDao spitterDao;
-	//SpitterDao spitterDao = new SpitterDao();
-	//SpittleDao spittleDao = new SpittleDao();
 	
 	@Autowired
 	@Qualifier("SpitterDao")
@@ -23,8 +16,6 @@ public class SpitterService {
 	
 	SpitterService(DAO<Spitter> dao){
 		this.dao = dao;
-		//this.spittleDao = spittleDao;
-		
 	}
 	
 	
@@ -64,50 +55,5 @@ public class SpitterService {
 		dao.delete(spitter);
 		
 	}
-	
-
-	
-	
-	//-------------------------spittle---------------------------
-	
-	
-	
-	//create Spittle
-	public void createSpittle(Spittle spittle ) {
-		
-		spittleDao.insert(spittle);
-			
-	}
-	
-	
-	//view Spittle
-	public void viewMySpittles(Spitter spitter) {
-		
-		spittleDao.get(spitter);
-		
-	}
-	
-	//view all spittles
-	public void viewAllSpittles() {
-		
-		spittleDao.getAll();
-		
-	}
-	
-	
-	//update Spittle
-	public void updateSpittle(Spittle spittle){
-		
-//		spittleDao.update(spittle);
-	
-	}
-	
-	
-	//delete Spittle
-	public void deleteSpittle(Spittle spittle) {
-		
-		spittleDao.delete(spittle);
-			
-	}
-	
 }
+	
