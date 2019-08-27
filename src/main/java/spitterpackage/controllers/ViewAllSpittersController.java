@@ -23,11 +23,7 @@ public class ViewAllSpittersController{
 	@Qualifier("SpitterService")
 	private SpitterService service;
 	
-	
-	public ViewAllSpittersController(SpitterService service) {
-		this.service = service;
-	}
-	
+
 	@RequestMapping(method=GET)
 	public String getSpitters(Model model) {
 		model.addAttribute("spitterList", service.viewAllSpitters());
