@@ -2,13 +2,16 @@ package spitterpackage;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import spitterpackage.dao.SpitterService;
+import spitterpackage.model.Spitter;
+
 public class Application {
 	
 	public static void main(String[] args) {
-			 	
+		//SpitterService spserv = new SpitterService();	 	
 		//Spitter test =  new Spitter("SPRING","SPRING","SPRING","SPRING",10);
 		//service.insert(test);
-		//Spitter kate = new Spitter("Kate","Barry", "KB","12345",6);
+		Spitter William = new Spitter("William","Carter", "WC","1234523",11);
 		//System.out.println("--------CREATE SPITTER--------");
 		//service.addSpitter(kate);
 		//service.viewSpitter(kate);

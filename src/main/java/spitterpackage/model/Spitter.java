@@ -1,9 +1,15 @@
 package spitterpackage.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "spitter")
@@ -24,6 +30,14 @@ public class Spitter {
 	@Id
 	@Column(name="id_spitter")
 	private int spitterId;
+	
+	@OneToMany(fetch=FetchType.LAZY,
+			mappedBy="spitter",
+			cascade= {CascadeType.PERSIST,
+					CascadeType.MERGE,
+					CascadeType.DETACH,
+					CascadeType.REFRESH})
+	private List<Spittle> spittles;
 	
 	
 	public Spitter(String firstname, String lastname, String username, String password , int spitterId) {

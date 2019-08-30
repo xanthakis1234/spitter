@@ -3,6 +3,8 @@ package spitterpackage.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,9 +18,12 @@ public class Spittle {
 	@Column(name="id_spittle")
 	private int spittleId = 0;
 	
-	@Column(name="username")
-	private String spitterUsername = null;
+	@ManyToOne
+    @JoinColumn(name="username")
+//	private String spitterUsername = null;
+	private Spitter spitter;
 	
+	private String spitterUsername;
 	
 	public Spittle(Spitter spitter, String spittle, int spittleId) {
 		
